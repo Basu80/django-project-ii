@@ -1,0 +1,45 @@
+{% extends 'store/main.html' %}
+{% block content %}
+<div class="container">
+    <h3 class="my-4">Order #{{ order.id }}</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Order Details</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Order ID:</strong> {{ order.id }}</p>
+                    <p><strong>Date:</strong> {{ order.date_ordered|date:"M d, Y" }}</p>
+                    <p><strong>Total:</strong> रु{{ order.get_cart_total|floatformat:2 }}</p>
+                    <p><strong>Status:</strong> {{ order.status }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            {% if order.shippingaddress %}
+            <div class="card">
+                <div class="card-header">
+                    <h5>Shipping Address</h5>
+                </div>
+                <div class="card-body">
+                    <p>{{ order.shippingaddress.address }}</p>
+                    <p>{{ order.shippingaddress.city }}, {{ order.shippingaddress.state }} {{ order.shippingaddress.zipcode }}</p>
+                    <p>{{ order.shippingaddress.phone_number }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    <h5>Order Items</h5>
+    {% for item in order.orderitem_set.all %}
+    <div class="cart-row">
+        <div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
+        <div style="flex:2"><p>{{item.product.name}}</p></div>
+        <div style="flex:1"><p>रु{{item.product.price|floatformat:2}}</p></div>
+        <div style="flex:1"><p>x{{item.quantity}}</p></div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

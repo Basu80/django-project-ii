@@ -1,0 +1,17 @@
+{% extends 'store/main.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card my-5">
+                <div class="card-body text-center">
+                    <h3 class="card-title">Thank you for your order!</h3>
+                    <p>Your order has been placed successfully.</p>
+                    <p>Your order number is: <strong>{{ order.id }}</strong></p>
+                    <a href="{% url 'store' %}" class="btn btn-primary">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

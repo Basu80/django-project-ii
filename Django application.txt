@@ -1,0 +1,45 @@
+>Run this project  
+
+create a virtual environment,
+ 
+python -m venv venv
+
+Activate it with 
+
+.\venv\Scripts\activate
+
+
+Then  install Django , stripe , python-dotenv
+Pillow 
+
+pip install -r requirements.txt  
+
+
+run migrations, 
+
+
+python manage.py migrate
+
+
+
+Now, run the development server.
+
+python manage.py runserver
+
+
+FOR ADMIN 
+
+http://127.0.0.1:8000/admin/
+----------------------------
+Login:
+    username: admin
+    password: djangoadmin
+'''
+
+
+The Django admin is implemented by registering models in each app's admin.py file.(shop/admin.py and blog/admin.py.)
+This automatically creates UI 
+
+
+
+  
